@@ -12,8 +12,17 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
     - uses: actions/checkout@v3
+    - name: Use Node.js [12.x]
+      uses: actions/setup-node@v3
+      with:
+          node-version: ${{ matrix.node-version }}
+      run: npm ci
     - name: Build the Docker image
       run: JWT_SECRET=secret OMDb_APIKEY=80c497b8 docker-compose up -d --build
     - name: Run test code
