@@ -16,5 +16,5 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: JWT_SECRET=secret OMDb_APIKEY=80c497b8 docker-compose up -d --build
-    - name: Run test.js
+    - name: Run test code
       run: npm run test
