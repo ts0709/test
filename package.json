@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server",
+  "server": "server.js",
+  "auth": "./auth/server.js",
+  "test": "test.js",
+  "scripts": {
+    "build": "JWT_SECRET=secret OMDb_APIKEY=80c497b8 docker-compose up -d --build",
+    "server": "node server.js",
+    "auth": "node ./auth/server.js",
+    "test": "node test.js"
+  },
+  "author": "Raj Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "compression": "^1.7.3",
+    "debug": "^4.3.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.9.10",
+    "node-fetch": "^2.6.7",
+    "querystring": "^0.2.1"
+  }
+}

@@ -1,0 +1,27 @@
+version: "3.2"
+services:
+  movieapp:
+    command: node server.js
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - published: ${APP_PORT:-8500}
+        target: 8500
+    volumes:
+      - .:/app/
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      OMDb_APIKEY: ${OMDb_APIKEY}
+  authapp:
+    command: node auth/server.js
+    build:
+      context: .
+      dockerfile: Dockerfile1
+    ports:
+      - published: ${APP_PORT:-3000}
+        target: 3000
+    volumes:
+      - .:/app/
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
